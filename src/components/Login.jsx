@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Login.css";
 
 export default function Login() {
   return (
     <>
-      <div className="d-flex body">
+      <div className="d-flex body-Login">
         <div className="container d-flex align-items-center align-self-center justify-content-center">
           <form>
             <div className="mb-2">
@@ -17,7 +18,7 @@ export default function Login() {
               </div>
             </div>
             <div className="mt-2 d-flex justify-content-center">
-              <Link to="/login" className="btn">
+              <Link to="/Juego" className="btn">
                 Login
               </Link>
             </div>

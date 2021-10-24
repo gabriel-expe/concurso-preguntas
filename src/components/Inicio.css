@@ -1,4 +1,4 @@
-.body{
+.body-Inicio{
     background-image: url(../img/fondo.svg);
     height: 100vh;
     background-size: cover;
@@ -6,8 +6,8 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-/* 
-.body :before{
+
+/* .body-Inicio :before{
     content:"";
     width: 100%;
     height: 100vh;
