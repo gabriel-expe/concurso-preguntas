@@ -13,9 +13,7 @@ export default function Login() {
                 className="form-control form-control-sm"
                 placeholder="Nickname"
               />
-              <div className="form-text">
-                5-20 caracteres
-              </div>
+              <div className="form-text">5-20 caracteres</div>
             </div>
             <div className="mt-2 d-flex justify-content-center">
               <Link to="/Juego" className="btn">

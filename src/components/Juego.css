@@ -6,3 +6,11 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.card-body{
+    background-color: #7415cd;
+}
+
+#p{
+    background-color: rgba(116, 10, 205, 0.5);
+}

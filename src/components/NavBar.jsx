@@ -8,7 +8,7 @@ export default function NavBar() {
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-dark">
         <div className="container-fluid">
-          <div className="collapse navbar-collapse d-flex flex-row-reverse justify-content-end">
+          <div className="collapse navbar-collapse d-flex flex-row-reverse">
             <div className="container d-flex justify-content-between align-items-center">
           <Link to="/">
             <img src={logo} className="img-fluid" alt="logo" />
