@@ -4,21 +4,26 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import home from "./components/home";
-import juego from "./components/juego";
-import tablaJugadores from "./components/tablaJugadores";
+import Inicio from "./components/Inicio";
+import Juego from "./components/Juego";
+import Login from "./components/Login";
+import NavBar from "./components/NavBar";
+import TablaJugadores from "./components/TablaJugadores";
+
 
 function App() {
   return (
-    <>
+    <div className="App">
     <Router>
+      <NavBar/>
       <Switch>
-          <Route exact path="/" component = {home} />
-          <Route exact path="/juego" component = {juego} />
-          <Route exact path="/tablajugadores" component = {tablaJugadores} />
+          <Route exact path="/juego" component = {Juego} />
+          <Route exact path="/tablajugadores" component = {TablaJugadores} />
+          <Route exact path="/login" component = {Login}/>
+          <Route exact path="/" component = {Inicio} />
       </Switch>
     </Router>
-    </>
+    </div>
   );
 }
 
