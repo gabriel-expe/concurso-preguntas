@@ -1,20 +1,20 @@
-import firebaseConfig from './variables.js';
+import firebaseConfig from './credenciales.js';
 // COnfiguracion e inicializacion de la base de datos
 import { initializeApp } from 'firebase/app'
 // Referencia a la base de datos
 import { getFirestore } from 'firebase/firestore'
 // Referencia al paquete de autenticacion
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 // Metodos de interaccion con la base de datos
 import { addDoc, collection, getDocs, query, getDoc, doc, updateDoc, deleteDoc } from 'firebase/firestore'
 
 initializeApp(firebaseConfig);
-const database = getFirestore();
+export const database = getFirestore();
 export const auth = getAuth();
-export let usuario;
 
+// CONFIGURACIÓN DE FIREBASE PARA EL CONSUMO, CREACIÓN, ACTUALIZACIÓN Y ELIMINACIÓN DE DOCUMENTOS.
 
-// Guardar base de datos
+// Guardar nuevo documento en base de datos
 export const guardarDatabase = async (nombreColeccion, data) => {
 
   try {
@@ -34,7 +34,7 @@ export const consultarDatabase = async (nombreColeccion) => {
 
     const coleccionDatos = respuesta.docs.map((documento) => {
       const documentoTemporal = {
-        id: documento.id,
+        id: documento.uid,
         ...documento.data()
       }
       return documentoTemporal
@@ -136,13 +136,13 @@ export const datosUsuario = () => {
 }
 
 // Usuario Activo
-onAuthStateChanged(auth, (user) => {
+// onAuthStateChanged(auth, (user) => {
 
-  if (user) {
-    usuario = user
-    console.log('El usuario logueado');
-  } else {
-    console.log('El usuario ya no esta logueado');
-    usuario = undefined
-  }
-})
+//   if (user) {
+//     usuario = user
+//     console.log('El usuario logueado');
+//   } else {
+//     console.log('El usuario ya no esta logueado');
+//     usuario = undefined
+//   }
+// })

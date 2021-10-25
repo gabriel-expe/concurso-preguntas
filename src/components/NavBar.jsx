@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import logo from "../img/Logo.png";
 import "./NavBar.css";
 
+
+//BARRA DE NAVEGACIÓN, QUEDA EN LA PARTE DE ARRIBA DE LA PÁGINA.
+//EL USUARIO PUEDE DARLE AL LOGO DEL JUEGO PARA IR A LA PANTALLA DE INICIO, A A RESULTADOS PARA VER PARTE DEL REGISTRO.
+
 export default function NavBar() {
   return (
     <>
@@ -15,7 +19,7 @@ export default function NavBar() {
           </Link>
               <Link to="/puntuaciones">
                 <button className="btn">
-                  Mejores Puntuaciones
+                  Historia Puntuaciones
                 </button>
               </Link>
             </div>

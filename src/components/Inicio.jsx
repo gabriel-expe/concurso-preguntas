@@ -2,7 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Inicio.css";
 
+// PANTALLA DE INICIO DE LA APP
+
 export default function Inicio() {
+
   return (
     <>
       <div className="d-flex body-Inicio">

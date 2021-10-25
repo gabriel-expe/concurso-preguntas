@@ -1,29 +1,26 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-import Inicio from "./components/Inicio";
-import Juego from "./components/Juego";
-import Login from "./components/Login";
-import NavBar from "./components/NavBar";
-import Puntuaciones from "./components/Puntuaciones";
+import React, { useState } from "react";
+import AppRutas from "./components/Routes/AppRutas";
+import { InfoUsuario } from "./components/UserContext";
 
+  //PADRE DE TODO, SE PONE EL CONTEXT PARA QUE PUEDA SER USADO DENTRO DE TODAS LAS INTERFACES.
 
 function App() {
+
+  const fecha = new Date().toDateString()
+
+  const [usuario, setUsuario] = useState({
+    nickname: '',
+    fecha: fecha,
+    puntuacion: 0
+  })
+
   return (
-    <>
-    <Router>
-      <NavBar/>
-      <Switch>
-          <Route exact path="/juego" component = {Juego} />
-          <Route exact path="/login" component = {Login}/>
-          <Route exact path="/puntuaciones" component = {Puntuaciones}/>
-          <Route exact path="/" component = {Inicio} />
-      </Switch>
-    </Router>
-    </>
+    <InfoUsuario.Provider value = {{
+      usuario,
+      setUsuario,
+    }}>
+      <AppRutas/>
+    </InfoUsuario.Provider>
   );
 }
 
