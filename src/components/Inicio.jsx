@@ -5,7 +5,6 @@ import "./Inicio.css";
 // PANTALLA DE INICIO DE LA APP
 
 export default function Inicio() {
-
   return (
     <>
       <div className="d-flex body-Inicio">
