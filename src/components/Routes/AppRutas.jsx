@@ -5,11 +5,11 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import Inicio from "../Inicio";
-import Juego from "../Juego";
-import Login from "../Login";
-import NavBar from "../NavBar";
-import Puntuaciones from "../Puntuaciones";
+import Inicio from "../Inicio.jsx";
+import Juego from "../Juego.jsx";
+import Login from "../Login.jsx";
+import NavBar from "../NavBar.jsx";
+import Puntuaciones from "../Puntuaciones.jsx";
 
 //Componente que contiene las rutas disponibles en la app. Si se ingresa una no existente, redirige a inicio
 

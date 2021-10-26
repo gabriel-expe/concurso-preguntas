@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import AppRutas from "./components/Routes/AppRutas";
-import { InfoUsuario } from "./components/UserContext";
+import AppRutas from "./components/Routes/AppRutas.jsx";
+import { InfoUsuario } from "./components/UserContext.jsx";
 
 //PADRE DE TODO, SE PONE EL CONTEXT PARA QUE PUEDA SER USADO DENTRO DE TODAS LAS INTERFACES.
 
