@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { consultarDatabase, guardarDatabase} from "../config/firebase";
 import "./Login.css";
 import { InfoUsuario} from "./UserContext";
-import { nanoid } from 'nanoid'
 
 
 //PANTALLA DE LOGIN, DONDE EL USUARIO SE PUEDE LOGUEAR SIMPLEMENTE CON EL NICKNAME.
@@ -33,14 +32,14 @@ export default function Login() {
     if(usuarioExiste){
       setUsuario(usuarioExiste)
     }else{
+
       setUsuario({
         nickname: usuario.nickname,
         fecha: new Date().toDateString(),
-        id: `${nanoid()}`,
         puntuacion: 0
       }
       )
-      setListaUsuarios([...listaUsuarios, usuario])
+      // setListaUsuarios([...listaUsuarios, usuario])
       guardarDatabase('usuarios',usuario)
     }
 
