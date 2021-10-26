@@ -22,8 +22,8 @@ export default function AppRutas() {
           <Route exact path="/juego" component={Juego} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/puntuaciones" component={Puntuaciones} />
-          <Route exact path="/" component={Inicio} />
-          <Redirect to="/" />
+          <Route exact path="/concurso-preguntas" component={Inicio} />
+          <Redirect to="/concurso-preguntas" />
         </Switch>
       </Router>
     </>
