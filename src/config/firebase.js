@@ -15,10 +15,8 @@ import {
   updateDoc,
   where,
   orderBy,
-  limit
-
+  limit,
 } from "firebase/firestore";
-
 
 initializeApp(firebaseConfig);
 export const database = getFirestore();
@@ -28,7 +26,6 @@ export const database = getFirestore();
 export const guardarDatabase = async (nombreColeccion, data) => {
   try {
     const respuesta = await addDoc(collection(database, nombreColeccion), data);
-    console.log(respuesta);
     return respuesta;
   } catch (e) {
     throw new Error(e);
@@ -72,17 +69,13 @@ export const consultarDocumentoDatabase = async (nombreColeccion, id) => {
 };
 
 // Actualizacion de un documento
-export const actualizarDocumentoDatabase = async (
-  nombreColeccion,
-  dato
-) => {
+export const actualizarDocumentoDatabase = async (nombreColeccion, dato) => {
   try {
-    const cDatos = await consultarDatabase(nombreColeccion)
-    let auxID
-    cDatos.forEach(d=>{
-      if(d.nickname === dato.nickname)
-      auxID = d.id
-    })
+    const cDatos = await consultarDatabase(nombreColeccion);
+    let auxID;
+    cDatos.forEach((d) => {
+      if (d?.nickname === dato?.nickname) auxID = d.id;
+    });
     await updateDoc(doc(database, nombreColeccion, auxID), dato);
   } catch (e) {
     throw new Error(e);
@@ -91,31 +84,32 @@ export const actualizarDocumentoDatabase = async (
 
 // Extrae una colección filtrada de la base de datos, de forma descendente limitado a 10
 
-export const ConsultarColeccionFiltrada = async (nombreColeccion, keyDocumento, condicion, value) => {
-    try {
-      const response = await getDocs(
-                                      query(
-                                             collection(database, nombreColeccion), 
-                                             where(keyDocumento, condicion, value), 
-                                             orderBy(keyDocumento, 'desc'), 
-                                             limit(10) // Limita a 10 la cantidad de jugadores a extraer
-                                           )
-                                    );
-      console.log(response);
-      const elementos = response.docs.map((doc) => {
-        const document = {
-          id: doc.id,
-          ...doc.data()
-        }
-        return document;
-      })
-  console.log(elementos)
-      return elementos
-    } catch (error) {
-      throw new Error(error.message)
-    }
+export const ConsultarColeccionFiltrada = async (
+  nombreColeccion,
+  keyDocumento,
+  condicion,
+  value
+) => {
+  try {
+    const response = await getDocs(
+      query(
+        collection(database, nombreColeccion),
+        where(keyDocumento, condicion, value),
+        orderBy(keyDocumento, "desc"),
+        limit(10) // Limita a 10 la cantidad de jugadores a extraer
+      )
+    );
+    console.log(response);
+    const elementos = response.docs.map((doc) => {
+      const document = {
+        id: doc.id,
+        ...doc.data(),
+      };
+      return document;
+    });
+    console.log(elementos);
+    return elementos;
+  } catch (error) {
+    throw new Error(error.message);
   }
-
-
-
-
+};
