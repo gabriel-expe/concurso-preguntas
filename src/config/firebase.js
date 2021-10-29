@@ -13,6 +13,10 @@ import {
   getDoc,
   doc,
   updateDoc,
+  where,
+  orderBy,
+  limit
+
 } from "firebase/firestore";
 
 
@@ -85,6 +89,32 @@ export const actualizarDocumentoDatabase = async (
   }
 };
 
+// Extrae una colección filtrada de la base de datos, de forma descendente limitado a 10
+
+export const ConsultarColeccionFiltrada = async (nombreColeccion, keyDocumento, condicion, value) => {
+    try {
+      const response = await getDocs(
+                                      query(
+                                             collection(database, nombreColeccion), 
+                                             where(keyDocumento, condicion, value), 
+                                             orderBy(keyDocumento, 'desc'), 
+                                             limit(10) // Limita a 10 la cantidad de jugadores a extraer
+                                           )
+                                    );
+      console.log(response);
+      const elementos = response.docs.map((doc) => {
+        const document = {
+          id: doc.id,
+          ...doc.data()
+        }
+        return document;
+      })
+  console.log(elementos)
+      return elementos
+    } catch (error) {
+      throw new Error(error.message)
+    }
+  }
 
 
 

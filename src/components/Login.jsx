@@ -1,55 +1,45 @@
-import { useContext, useEffect, useState} from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { consultarDatabase, guardarDatabase} from "../config/firebase";
+import { consultarDatabase, guardarDatabase } from "../config/firebase";
 import "./Login.css";
-import { InfoUsuario} from "./UserContext";
-
+import { InfoUsuario } from "./UserContext";
 
 //PANTALLA DE LOGIN, DONDE EL USUARIO SE PUEDE LOGUEAR SIMPLEMENTE CON EL NICKNAME.
 //NO HAY NICKNAME REPETIDOS, PERO NO TIENEN RESTRICCIONES EN TEMA DE NÚMERO DE CARACTERES.
 //SI SE INGRESA UN NICKNAME QUE YA SE ENCUENTRA EN LA BASE DE DATOS, SE EXTRAE SU INFORMACIÓN Y SE JUEGA CON ÉL
 
-
 export default function Login() {
-
-  const {usuario, setUsuario} = useContext(InfoUsuario)
-  const [listaUsuarios, setListaUsuarios] = useState([])
+  const { usuario, setUsuario } = useContext(InfoUsuario);
+  const [listaUsuarios, setListaUsuarios] = useState([]);
 
   useEffect(() => {
-    actualizarListaUsuarios()
-
-  },[]);
-
+    actualizarListaUsuarios();
+  }, []);
 
   async function actualizarListaUsuarios() {
-    setListaUsuarios(await consultarDatabase('usuarios'));
-};
+    setListaUsuarios(await consultarDatabase("usuarios"));
+  }
 
-  const handleUsuario = ()=>{
-    
-    let usuarioExiste = null
-    usuarioExiste = listaUsuarios.find(u=>u.nickname === usuario.nickname)
-    if(usuarioExiste){
-      setUsuario(usuarioExiste)
-    }else{
-
+  const handleUsuario = () => {
+    let usuarioExiste = null;
+    usuarioExiste = listaUsuarios.find((u) => u.nickname === usuario.nickname);
+    if (usuarioExiste) {
+      setUsuario(usuarioExiste);
+    } else {
       setUsuario({
         nickname: usuario.nickname,
         fecha: new Date().toDateString(),
-        puntuacion: 0
-      }
-      )
+        puntuacion: 0,
+      });
       // setListaUsuarios([...listaUsuarios, usuario])
-      guardarDatabase('usuarios',usuario)
+      guardarDatabase("usuarios", usuario);
     }
+  };
 
-  }
-
-const handleSetUsuario = (e)=>{
-  setUsuario({...usuario, nickname:e.target.value})
-}
+  const handleSetUsuario = (e) => {
+    setUsuario({ ...usuario, nickname: e.target.value });
+  };
   return (
-
     <>
       <div className="d-flex body-Login">
         <div className="container d-flex align-items-center align-self-center justify-content-center">
